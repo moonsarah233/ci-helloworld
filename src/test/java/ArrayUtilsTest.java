@@ -46,4 +46,40 @@ public class ArrayUtilsTest {
     public void testOddOrPositiveBothPositivesAndNegatives() {
         assertEquals(3, ArrayUtils.oddOrPos(new int[]{-3, -2, 0, 1, 4}));
     }
+
+    @Test
+    public void testCountOfSingleOccurrence() {
+        int[] array = {1, 2, 3, 4, 5};
+        int target = 3;
+        int expectedCount = 1;
+        int actualCount = ArrayUtils.countOf(array, target);
+        assertEquals(expectedCount, actualCount);
+    }
+
+    @Test
+    public void testCountOfMultipleOccurrences() {
+        int[] array = {1, 2, 3, 4, 3, 5, 3};
+        int target = 3;
+        int expectedCount = 3;
+        int actualCount = ArrayUtils.countOf(array, target);
+        assertEquals(expectedCount, actualCount);
+    }
+
+    @Test
+    public void testCountOfNoOccurrence() {
+        int[] array = {1, 2, 3, 4, 5};
+        int target = 6; // Number not present in the array
+        int expectedCount = 0;
+        int actualCount = ArrayUtils.countOf(array, target);
+        assertEquals(expectedCount, actualCount);
+    }
+
+    @Test
+    public void testCountOfEmptyArray() {
+        int[] array = {};
+        int target = 5; // Target doesn't matter as the array is empty
+        int expectedCount = 0;
+        int actualCount = ArrayUtils.countOf(array, target);
+        assertEquals(expectedCount, actualCount);
+    }
 }
